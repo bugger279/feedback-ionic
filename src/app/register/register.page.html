@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="primary">
+  <form (ngSubmit)="registration()" [formGroup]="registerForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md="6" size-sm="5" size-xs="12" class="ion-align-self-center">
+          <div class="ion-text-center">
+            <h3>Create an account!</h3>
+          </div>
+          <div class="ion-padding">
+            <ion-item color="primary">
+              <ion-label position="floating">Your Full Name</ion-label>
+              <ion-input formControlName="name" type="text"></ion-input>
+            </ion-item>
+            <div margin-top color="warning" *ngIf="submitted && f.name.errors" class="invalid-feedback">
+              <div *ngIf="f.name.errors.required">Name is required</div>
+              <div *ngIf="f.name.errors.minlength">Name must be at least 4 characters</div>
+            </div>
+            <ion-item color="primary">
+              <ion-label position="floating">Your Email Address</ion-label>
+              <ion-input formControlName="email" type="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"></ion-input>
+            </ion-item>
+            <div margin-top color="warning" *ngIf="submitted && f.email.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors.required">Email is required</div>
+              <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+            </div>
+            <div margin>
+              <ion-button (click)="registration()" fill="solid" color="primary" expand="full">
+                <ion-icon name="send" slot="start"></ion-icon>Register
+              </ion-button>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
