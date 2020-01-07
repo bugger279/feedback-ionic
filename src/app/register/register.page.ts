@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-register',
@@ -10,7 +12,7 @@ export class RegisterPage implements OnInit {
   public registerForm: FormGroup;
   public submitted = false;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private alertController: AlertController) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -33,5 +35,13 @@ export class RegisterPage implements OnInit {
     }
     console.log('Success!');
     console.log(this.registerForm.get('name').value);
+
+    this.alertController.create({
+      header: `${this.registerForm.get('name').value} Registered`,
+      message: `Thank You!`
+    }).then(alertEl => {
+      alertEl.present();
+    });
+
   }
 }
