@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title *ngIf="feedBackUserList?.length > 0">Feedback</ion-title>
+    <ion-title *ngIf="feedBackUserList?.length == 0">No Users Available to give Feedback</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="feedBackUserList?.length > 0">
+  <form #form="ngForm" *ngFor="let userList of feedBackUserList;let i =index">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md="6" offset-md="3" offset-sm="6" size-sm="6" size-xs="12" class="ion-align-self-center">
+          <ion-item>
+            <ion-label position="floating">{{userList.receiver_name}}</ion-label>
+            <ion-input type="text" name="feedback_data" #feedback_data="ngModel" [(ngModel)]="userList.model" minlength="15" required></ion-input>
+          </ion-item>
+          <div *ngIf="feedback_data.invalid && feedback_data.dirty" class="ion-padding-vertical">
+            <div *ngIf="feedback_data.errors.required">
+              Feedback is required.
+            </div>
+            <div *ngIf="feedback_data.errors.minlength">
+              Feedback must be at least 15 characters long.
+            </div>
+          </div>
+            <ion-button fill="solid" color="primary" expand="full" [disabled]="userList.isDisabled || form.invalid" (click)="submitReview(userList, i)">Send</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
+
+<ion-content *ngIf="feedBackUserList?.length == 0">
+  <p>No Users found OR feedback already given.</p>
+</ion-content>
