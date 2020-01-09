@@ -1,3 +1,22 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-split-pane>
+    <ion-menu color="primary">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle autohide="false">
+            <ion-item [routerLink]="['/home']" routerDirection="root">Home</ion-item>
+            <ion-item [routerLink]="['/login']" routerDirection="root" >Login</ion-item>
+            <ion-item [routerLink]="['/register']" routerDirection="root" >Register</ion-item>
+            <ion-item [routerLink]="['/feedback']" routerDirection="root" >Feedback</ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
 </ion-app>
