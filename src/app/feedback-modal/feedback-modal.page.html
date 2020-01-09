@@ -2,6 +2,11 @@
   <ion-toolbar color="primary">
     <ion-title *ngIf="feedBackUserList?.length > 0">Feedback</ion-title>
     <ion-title *ngIf="feedBackUserList?.length == 0">No Users Available to give Feedback</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

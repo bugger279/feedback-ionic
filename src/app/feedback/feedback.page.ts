@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
-import { ToastController } from '@ionic/angular';
+import { ToastController, ModalController } from '@ionic/angular';
+import { FeedbackModalPage } from '../feedback-modal/feedback-modal.page';
 
 @Component({
   selector: 'app-feedback',
@@ -9,7 +10,7 @@ import { ToastController } from '@ionic/angular';
 })
 export class FeedbackPage implements OnInit {
 
-  constructor(private auth: AuthenticationService, private toastController: ToastController) { }
+  constructor(private modalController: ModalController, private auth: AuthenticationService, private toastController: ToastController) { }
 
   public yourFeedBackData: Array<any> = [];
   public yeedBackUserList: Array<any> = [];
@@ -31,4 +32,10 @@ export class FeedbackPage implements OnInit {
     );
   }
 
+  async openModal() {
+    const modal = await this.modalController.create({
+      component: FeedbackModalPage
+    });
+    return await modal.present();
+  }
 }
