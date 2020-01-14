@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { AuthenticationService } from './authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -14,26 +15,31 @@ export class AppComponent {
   public pages = [
     {
       title: 'Home',
-      url: '/home'
+      url: '/home',
+      role: 0
     },
     {
       title: 'Login',
-      url: '/login'
+      url: '/login',
+      role: 0,
     },
     {
       title: 'Register',
-      url: '/register'
+      url: '/register',
+      role: 0
     },
     {
       title: 'Feedback',
-      url: '/feedback'
+      url: '/feedback',
+      role: 1
     }
   ];
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    public auth: AuthenticationService
   ) {
     this.initializeApp();
   }

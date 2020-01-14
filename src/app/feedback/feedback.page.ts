@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
 import { ToastController, ModalController } from '@ionic/angular';
 import { FeedbackModalPage } from '../feedback-modal/feedback-modal.page';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-feedback',
@@ -10,7 +11,8 @@ import { FeedbackModalPage } from '../feedback-modal/feedback-modal.page';
 })
 export class FeedbackPage implements OnInit {
 
-  constructor(private modalController: ModalController, private auth: AuthenticationService, private toastController: ToastController) { }
+  // tslint:disable-next-line: max-line-length
+  constructor(private modalController: ModalController, private router: Router, private auth: AuthenticationService, private toastController: ToastController) { }
 
   public yourFeedBackData: Array<any> = [];
   public yeedBackUserList: Array<any> = [];
