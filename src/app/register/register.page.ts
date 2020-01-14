@@ -23,7 +23,7 @@ export class RegisterPage implements OnInit {
     });
 
     if (this.auth.isLoggedIn()) {
-      this.router.navigate(['/feeedback']);
+      this.router.navigate(['/feedback']);
     }
   }
 

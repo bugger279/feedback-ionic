@@ -1,4 +1,4 @@
-<ion-app>
+<!-- <ion-app>
   <ion-split-pane>
     <ion-menu color="primary">
       <ion-header>
@@ -18,5 +18,27 @@
       </ion-content>
     </ion-menu>
     <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+</ion-app> -->
+
+<ion-app>
+  <ion-split-pane contentId="content">
+    <ion-menu contentId="content" type="overlay">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">
+            <ion-item [routerDirection]="'root'" [routerLink]="p.url">
+              <ion-label>{{p.title}}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="content"></ion-router-outlet>
   </ion-split-pane>
 </ion-app>
